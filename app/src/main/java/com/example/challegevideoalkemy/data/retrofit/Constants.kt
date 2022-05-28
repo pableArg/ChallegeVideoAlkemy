@@ -9,6 +9,7 @@ class Constants {
         const val BASE_URL_POPULARITY : String = "https://api.themoviedb.org/3/movies/popular"
         const val END_POINT_POPULAR : String = "/movies/popular"
         const val IMG_API_PATH : String = "https://image.tmdb.org/t/p/w500"
+        const val SEARCH_URL :String = "https://api.themoviedb.org/3/search/"
 
     }
 }

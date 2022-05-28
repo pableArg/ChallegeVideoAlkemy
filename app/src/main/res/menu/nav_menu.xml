@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ShowIn="navigation_view">
+
+    <item
+        android:id="@+id/searchFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="Search" />
+    <item
+        android:id="@+id/homeFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_bookmarks_24"
+        android:title="Popular" />
+    <item
+        android:id="@+id/myFavouriteFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_library_books_24"
+        android:title="My favourite" />
+
+
+</menu>

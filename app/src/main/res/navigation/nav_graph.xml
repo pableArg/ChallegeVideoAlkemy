@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/searchFragment2">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.challegevideoalkemy.ui.fragments.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment2"
+            app:destination="@id/searchFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/myLFavouriteFragment"
+        android:name="com.example.challegevideoalkemy.ui.fragments.MyLFavouriteFragment"
+        android:label="fragment_my_favourite"
+        tools:layout="@layout/fragment_my_favourite" >
+        <action
+            android:id="@+id/action_myLFavouriteFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment2"
+        android:name="com.example.challegevideoalkemy.ui.fragments.SearchFragment"
+        android:label="SearchFragment" />
 </navigation>
