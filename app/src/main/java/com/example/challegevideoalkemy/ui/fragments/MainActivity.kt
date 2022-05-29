@@ -1,10 +1,11 @@
-package com.example.challegevideoalkemy
+package com.example.challegevideoalkemy.ui.fragments
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI.setupWithNavController
+import com.example.challegevideoalkemy.R
 import com.example.challegevideoalkemy.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +17,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        navController = Navigation.findNavController(this,R.id.nav_host)
+        navController = Navigation.findNavController(this, R.id.nav_host)
         setupWithNavController(binding.bottomNavigationView,navController)
+
+
+
+    }
+
+    fun getNavControl(){
+
+
     }
 }

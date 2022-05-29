@@ -26,7 +26,7 @@ class SearchViewModel(private val movieList: MovieApiClientTitle) : ViewModel() 
     }
 
 
-    fun getMovies(query: String) {
+    fun getMoviesByTitle(query: String) {
         viewModelScope.launch {
             try {
                 val response = movieList.getMoviesByTitle(query)

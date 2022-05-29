@@ -6,19 +6,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.SearchFragment">
+    tools:context=".ui.fragments.SearchFragment"
+    android:background="@color/asd" >
 
     <androidx.appcompat.widget.SearchView
-
+        android:backgroundTint="@color/white"
         android:id="@+id/sv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
+        android:shadowColor="@color/white"
         android:background="@drawable/search_background"
-        app:defaultQueryHint="Buscar libro"
+        app:defaultQueryHint="Buscar Pelicula"
         app:iconifiedByDefault="false"
+        android:outlineAmbientShadowColor="@color/white"
+        android:outlineSpotShadowColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/rv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -26,6 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+
         android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"

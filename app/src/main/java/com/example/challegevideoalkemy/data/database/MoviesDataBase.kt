@@ -17,19 +17,25 @@ import kotlinx.coroutines.InternalCoroutinesApi
 abstract class MoviesDataBase : RoomDatabase() {
     abstract fun favoriteDao(): FavDao
 
-     companion object{
-         private var INSTANCE : MoviesDataBase? = null
-         fun getDatabase(context : Context) : MoviesDataBase{
+    companion object {
+        private const val DATABASE_NAME = "videoteca_db"
+        private var INSTANCE: MoviesDataBase? = null
 
-             INSTANCE = INSTANCE ?: Room.databaseBuilder(context.applicationContext , MoviesDataBase::class.java , "cards").build()
+        fun getInstanceDb(context: Context): MoviesDataBase {
 
-             return INSTANCE!!
-         }
+            INSTANCE ?: synchronized(this) {
+                INSTANCE = Room.databaseBuilder(
+                    context.applicationContext,
+                    MoviesDataBase::class.java,
+                    DATABASE_NAME
+                )
+                    .allowMainThreadQueries()
+                    .build()
+            }
 
-         fun destroyInstance(){
-             INSTANCE = null
-         }
-     }
+            return INSTANCE!!
+        }
+    }
 
 
 

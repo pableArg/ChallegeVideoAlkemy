@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.challegevideoalkemy.R
 
 
-class MyLFavouriteFragment : Fragment() {
+class MyFavouriteFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,16 +1,26 @@
 package com.example.challegevideoalkemy.ui.fragments
 
+import android.content.Intent
+import android.os.Build.ID
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.challegevideoalkemy.R
 import com.example.challegevideoalkemy.databinding.FragmentHomeBinding
 import com.example.challegevideoalkemy.domain.model.Movie
+import com.example.challegevideoalkemy.ui.adapter.Communicator
 import com.example.challegevideoalkemy.ui.adapter.MovieAdapter
+
 import com.example.challegevideoalkemy.ui.viewModel.HomeViewModel
 
 
@@ -40,12 +50,11 @@ class HomeFragment : Fragment() {
         initRecyclerView()
         setupObservers()
 
-
     }
 
+
     private fun initRecyclerView() {
-        homeBinding.rv.layoutManager =
-            LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        homeBinding.rv.layoutManager = GridLayoutManager(this.context, 2)
         movieAdapter = MovieAdapter(movieList)
         homeBinding.rv.adapter = movieAdapter
 
@@ -66,11 +75,6 @@ class HomeFragment : Fragment() {
     }
 
 
-    private fun getMovieDataPage(page: Int = 15) {
-        page?.run {
-            model.getMovie(this)
-        }
-    }
 
 
 }

@@ -8,17 +8,19 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.ThemedSpinnerAdapter
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.challegevideoalkemy.R
 import com.example.challegevideoalkemy.databinding.FragmentSearchBinding
 import com.example.challegevideoalkemy.domain.model.Movie
 import com.example.challegevideoalkemy.ui.adapter.MovieAdapter
+import com.example.challegevideoalkemy.ui.adapter.MovieSearchAdapter
 import com.example.challegevideoalkemy.ui.viewModel.SearchViewModel
 import com.example.challegevideoalkemy.utils.hideKeyboard
 
 
 class SearchFragment : Fragment() {
-    private lateinit var movieAdapter: MovieAdapter
+    private lateinit var movieSearchAdapter: MovieSearchAdapter
     private lateinit var searchBinding: FragmentSearchBinding
     private var movieList = mutableListOf<Movie>()
     private val model: SearchViewModel by activityViewModels() { SearchViewModel.Factory() }
@@ -49,7 +51,7 @@ class SearchFragment : Fragment() {
             object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     query?.run {
-                        model.getMovies(this)
+                        model.getMoviesByTitle(this)
                     }
                     hideKeyboard()
                     return true
@@ -62,17 +64,16 @@ class SearchFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        searchBinding.rv.layoutManager =
-            LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        movieAdapter = MovieAdapter(movieList)
-        searchBinding.rv.adapter = movieAdapter
-
+        searchBinding.rv.layoutManager = GridLayoutManager(this.context, 2)
+        movieSearchAdapter = MovieSearchAdapter(movieList)
+        searchBinding.rv.adapter = movieSearchAdapter
 
     }
+
     private fun setupObservers() {
         model.getSearchedMovie().observe(viewLifecycleOwner) {
-            movieAdapter.movieList = it
-            movieAdapter.notifyDataSetChanged()
+            movieSearchAdapter.movieList = it
+            movieSearchAdapter.notifyDataSetChanged()
         }
     }
 

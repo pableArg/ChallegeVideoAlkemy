@@ -7,10 +7,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MovieApiClientTitle {
 
-    private val getInstanceTitle =
+    private val getInstanceTitle: ApiService =
         Retrofit.Builder()
+            .baseUrl(Constants.SEARCH_URL)
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(Constants.BASE_URL)
             .build()
             .create(ApiService::class.java)
 

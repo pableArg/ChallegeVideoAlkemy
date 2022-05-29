@@ -5,16 +5,13 @@ import com.google.gson.annotations.SerializedName
 data class Movie (
 
     @SerializedName ("id")
-    var id : Integer,
+    var id : Int,
 
     @SerializedName ("original_title")
     var  title: String,
 
     @SerializedName ("poster_path")
     var image : String,
-
-    @SerializedName ("genre_ids")
-    var  genres: String,
 
     @SerializedName ("original_language")
     var lenguage: String,

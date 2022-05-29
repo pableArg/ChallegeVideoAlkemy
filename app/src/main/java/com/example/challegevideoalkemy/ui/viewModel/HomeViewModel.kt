@@ -26,27 +26,6 @@ class HomeViewModel  (private val movieList: MovieApiClientPopular): ViewModel()
     }
 
 
-    fun getMovie(page: Int) {
-        viewModelScope.launch {
-            try {
-                val response = movieList.getPopularMovies(page)
-                if (response.isSuccessful && response.body() != null) {
-                    val movies = response.body()!!
-                    if(movies.results != null) {
-                        movieListPopular.value = movies.results
-                    }else{
-                        movieListPopular.value = mutableListOf()
-                    }
-                } else {
-                    val error = response.errorBody().toString()
-                    errorMessage.value = error
-                }
-            }catch (e: Exception){
-                errorMessage.value = e.message
-            }
-
-        }
-    }
     fun getMovies() {
         viewModelScope.launch {
             try {
@@ -69,18 +48,6 @@ class HomeViewModel  (private val movieList: MovieApiClientPopular): ViewModel()
         }
     }
 
-//    fun getMovieAction() {
-//        viewModelScope.launch {
-//            val response = movieList.getPopularMoviess()
-//            if (response.isSuccessful && response.body() != null) {
-//                withContext(Dispatchers.Main) {
-//                    moviesListDataAccion.value = response.body()
-//                }
-//            } else {
-//                errorMessage.value = response.errorBody().toString()
-//            }
-//        }
-//    }
 
 
 }

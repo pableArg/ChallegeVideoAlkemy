@@ -1,6 +1,6 @@
 package com.example.challegevideoalkemy.ui.adapter
 
-import android.annotation.SuppressLint
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -13,8 +13,6 @@ import com.squareup.picasso.Picasso
 
 class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.MyFavoriteViewHolder>() {
     private var favoritesMovies = mutableListOf<MovieFavDetail>()
-    private lateinit var onClickMaterialCardView: OnClickMaterialCardView
-
 
     override fun getItemCount(): Int = favoritesMovies.size
 
@@ -38,25 +36,12 @@ class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.MyFavoriteViewHolde
             .placeholder(R.color.purple_200)
             .into(holder.binding.imageViewFavorite)
 
-        holder.binding.cardView.setOnClickListener {
-            onClickMaterialCardView.onClick(favoriteMovie)
-        }
-    }
-    @SuppressLint("NotifyDataSetChange")
-    fun setMovies ( favorite: MutableList<MovieFavDetail>){
-        this.favoritesMovies = favorite
-        notifyDataSetChanged()
     }
 
 
-    fun setOnClickMaterialCardView(onClickMaterialCardView: OnClickMaterialCardView) {
 
-        this.onClickMaterialCardView = onClickMaterialCardView
-    }
 
-    interface OnClickMaterialCardView {
-        fun onClick(favorite: MovieFavDetail)
-    }
+
 
 
     class MyFavoriteViewHolder(val binding: ItemFavoriteBinding) :
