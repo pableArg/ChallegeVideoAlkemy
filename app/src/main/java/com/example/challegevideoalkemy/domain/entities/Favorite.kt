@@ -9,9 +9,9 @@ import androidx.room.PrimaryKey
 
 data class Favorite(
 
-    @PrimaryKey
+    @PrimaryKey (autoGenerate = true)
     @ColumnInfo (name = "favoriteID")
-    val id: Int,
+    val id: Int = 0,
 
     @ColumnInfo (name ="favoriteTitle")
     val title: String ,

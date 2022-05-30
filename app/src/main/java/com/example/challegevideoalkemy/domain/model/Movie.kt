@@ -16,6 +16,9 @@ data class Movie (
     @SerializedName ("original_language")
     var lenguage: String,
 
+    @SerializedName("overview")
+    var descripcion: String,
+
     @SerializedName ("popularity")
     var popularity: String,
 

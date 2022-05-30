@@ -4,12 +4,15 @@ package com.example.challegevideoalkemy.ui.adapter
 import android.view.LayoutInflater
 
 import android.view.ViewGroup
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.challegevideoalkemy.R
 import com.example.challegevideoalkemy.data.retrofit.Constants.Companion.IMG_API_PATH
 import com.example.challegevideoalkemy.databinding.ItemCardBinding
 import com.example.challegevideoalkemy.domain.model.Movie
+import com.example.challegevideoalkemy.ui.fragments.*
 
 import com.squareup.picasso.Picasso
 
@@ -34,6 +37,21 @@ class MovieAdapter(
             .load("${IMG_API_PATH}${movie.image}")
             .placeholder(R.color.purple_200)
             .into(holder.binding.imageView)
+
+        holder.binding.imageView.setOnClickListener{
+            /*var action=HomeFragmentDirections.actionHomeFragmentToDetailFragment(holder.binding.imageView.toString(),holder.binding.txtTitle.toString())
+            findNavController().navigate(action)*/
+
+            holder.binding.imageView.setOnClickListener { fabView ->
+                fabView.findNavController().navigate(HomeFragmentDirections
+                    .actionHomeFragmentToDetailFragment(movie.title,movie.image,movie.descripcion,movie.lenguage,
+                        movie.duration.toString(),movie.popularity,movie.premiere))
+
+
+            }
+
+
+        }
 
 
     }

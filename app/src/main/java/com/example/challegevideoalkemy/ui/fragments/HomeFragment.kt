@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
@@ -28,8 +29,10 @@ class HomeFragment : Fragment() {
 
     private lateinit var movieAdapter: MovieAdapter
     private val movieList = mutableListOf<Movie>()
+    private lateinit var navControllerFragment : NavController
     private val model: HomeViewModel by viewModels() { HomeViewModel.Factory() }
     private lateinit var homeBinding: FragmentHomeBinding
+    private lateinit var btnHome: ImageButton
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,6 +52,7 @@ class HomeFragment : Fragment() {
         getMovieData()
         initRecyclerView()
         setupObservers()
+
 
     }
 
@@ -73,6 +77,8 @@ class HomeFragment : Fragment() {
             movieAdapter.notifyDataSetChanged()
         }
     }
+
+
 
 
 
